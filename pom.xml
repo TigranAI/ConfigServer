@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>ru.tigran</groupId>
 	<artifactId>ConfigServer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>ConfigServer</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Config file server for spring cloud</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.1</spring-cloud.version>
@@ -44,14 +44,4 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 </project>
