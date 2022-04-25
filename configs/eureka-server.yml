@@ -1,0 +1,19 @@
+server:
+  port: 8761
+
+eureka:
+    instance:
+        non-secure-port: 80
+        hostname: localhost
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        
+spring:
+    main:
+        web-application-type: reactive
+    cloud:
+        gateway:
+            discovery:
+                locator:
+                    enabled: true

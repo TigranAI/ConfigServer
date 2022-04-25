@@ -1,0 +1,29 @@
+server:
+  port: 80
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: plagiarism-calc
+          predicates:
+            - Path=/plagiarism/**
+          filters:
+            - RewritePath=/plagiarism/(?<RID>.*), /$\{RID}
+          uri: http://localhost:4001
+
+        - id: auth-server
+          predicates:
+            - Path=/auth/**
+          filters:
+            - RewritePath=/auth/(?<RID>.*), /$\{RID}
+          uri: http://localhost:4002
+
+eureka:
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+    instance:
+        hostname: localhost
