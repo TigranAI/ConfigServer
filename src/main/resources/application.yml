@@ -10,4 +10,4 @@ spring:
     config:
       server:
         native:
-          search-locations: file:./configs
+          search-locations: file:///D:/Projects/WebEditorServices/ConfigServer/configs
