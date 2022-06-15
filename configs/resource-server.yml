@@ -1,5 +1,5 @@
 server:
-  port: 4004
+  port: 4002
 
 eureka:
   client:
@@ -12,11 +12,11 @@ eureka:
 
 spring:
   thymeleaf:
-    prefix: file:./static_editor/templates/
+    prefix: file:./staticresource/templates/
     cache: false
   web:
     resources:
-      static-locations: file:./static_editor/
+      static-locations: file:./staticresource/
   jpa:
     hibernate:
       ddl-auto: update

@@ -1,0 +1,79 @@
+server:
+  port: 80
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+
+eureka:
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+    instance:
+        hostname: localhost
+
+spring:
+  cloud:
+    gateway:
+        routes:
+          - id: eureka
+            uri: http://localhost:8761
+            predicates:
+              - Path=/admin/eureka
+            filters:
+              - AdminFilter
+              - RewritePath=^/admin/eureka\\/?(?<segment>.*),/${segment}
+
+          - id: eureka-resource
+            uri: http://localhost:8761
+            predicates:
+              - Path=/eureka/**
+
+          - id: admin
+            uri: http://localhost:4002
+            predicates:
+              - Path=/admin/**
+            filters:
+              - AdminFilter
+
+          - id: config
+            uri: http://localhost:8888
+            predicates:
+              - Path=/config/**
+            filters:
+              - UserFilter
+
+          - id: plagiarism
+            uri: http://localhost:4001
+            predicates:
+              - Path=/plagiarism/**
+
+          - id: auth
+            uri: http://localhost:4003
+            predicates:
+              - Path=/authorize/**
+
+          - id: monaco
+            uri: http://localhost:4004
+            predicates:
+              - Path=/editor/**
+
+          - id: main
+            uri: http://localhost:4002
+            predicates:
+              - Path=/
+
+          - id: site
+            uri: http://localhost:4002
+            predicates:
+              - Path=/**
+            filters:
+              - UserFilter
+
+jwt:
+  token:
+    prefix: "Bearer_"
+    header: "JWTAuth"
+    secret: "5eVD42Bj8rw9Rl4F${F$"

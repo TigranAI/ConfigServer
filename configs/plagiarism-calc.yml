@@ -9,7 +9,7 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/plagiarism
+    url: jdbc:postgresql://localhost:5432/web_practice?currentSchema=plagiarism
     username: postgres
     password: root
     hikari:
